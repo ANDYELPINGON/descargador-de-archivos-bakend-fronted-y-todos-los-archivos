@@ -1,90 +1,254 @@
-# File Downloader
+# File Downloader - Multi-Language Implementation
 
-A Python script for downloading files with specific extensions from web pages.
+Un proyecto completo para descargar archivos desde páginas web, implementado en múltiples lenguajes de programación.
 
-## Features
+## 🌟 Características
 
-- Download files with custom extensions from web pages
-- Robust error handling for network and file operations
-- Proper URL handling (relative to absolute conversion)
-- Configurable headers for HTTP requests
-- Comprehensive test suite with 99% coverage
+- **Multi-lenguaje**: Implementaciones en Python, C++, JavaScript/Node.js, Java y Go
+- **Descarga robusta**: Manejo de errores para operaciones de red y archivos
+- **Manejo de URLs**: Conversión adecuada de URLs relativas a absolutas
+- **Headers configurables**: User agents y headers HTTP personalizables
+- **Descargas paralelas**: Soporte para descargas concurrentes (Java, Go)
+- **Suite de tests completa**: 99% de cobertura en Python
+- **Containerización**: Soporte completo con Docker
 
-## Installation
+## 🚀 Instalación Rápida
 
-1. Install dependencies:
+### Usando Make (Recomendado)
+```bash
+# Instalar todas las dependencias
+make install
+
+# Compilar todos los proyectos
+make all
+
+# Ver información del proyecto
+make info
+```
+
+### Manual por Lenguaje
+
+#### Python
 ```bash
 pip install -r requirements.txt
 ```
 
-## Usage
-
-### As a Script
+#### JavaScript/Node.js
 ```bash
+cd src/javascript
+npm install
+```
+
+#### C++
+```bash
+cd src/cpp
+g++ -std=c++17 -o file_downloader main.cpp file_downloader.cpp -lcurl
+```
+
+#### Java
+```bash
+cd src/java
+javac *.java
+```
+
+#### Go
+```bash
+cd src/go
+go build -o filedownloader filedownloader.go
+```
+
+## 🎯 Uso
+
+### Python
+```bash
+# Ejecutar directamente
 python tripero.py
+
+# Como módulo
+make run-python
 ```
 
-### As a Module
-```python
-from tripero import FileDownloader
-
-# Create downloader instance
-downloader = FileDownloader("https://example.com")
-
-# Download files from a page
-count = downloader.download_files_from_page(
-    "https://example.com/downloads", 
-    ".bakent_fronted", 
-    "downloads"
-)
-print(f"Downloaded {count} files")
-```
-
-## Testing
-
-Run all tests:
+### JavaScript/Node.js
 ```bash
-pytest
+# Ejecutar directamente
+cd src/javascript && node main.js
+
+# Con make
+make run-js
 ```
 
-Run tests with coverage:
+### C++
 ```bash
+# Compilar y ejecutar
+make run-cpp
+```
+
+### Java
+```bash
+# Compilar y ejecutar
+make run-java
+```
+
+### Go
+```bash
+# Compilar y ejecutar
+make run-go
+```
+
+### Docker
+```bash
+# Ejecutar con Python
+docker-compose up python-downloader
+
+# Ejecutar con Node.js
+docker-compose up nodejs-downloader
+
+# Ejecutar con Go
+docker-compose up go-downloader
+
+# Ejecutar con Java
+docker-compose up java-downloader
+
+# Entorno de desarrollo completo
+docker-compose up dev-environment
+```
+
+## 🧪 Testing
+
+### Python (Suite Completa)
+```bash
+# Ejecutar todos los tests
+make test
+
+# Tests con cobertura
 pytest --cov=tripero --cov-report=term-missing
-```
 
-Run specific test class:
-```bash
+# Tests específicos
 pytest tests/test_tripero.py::TestFileDownloader
 ```
 
-## Test Coverage
+## 📊 Cobertura de Tests
 
-The project maintains 99% test coverage, testing all major functionality including:
+El proyecto mantiene **99% de cobertura** en Python, probando toda la funcionalidad principal:
 
-- HTTP request handling and error cases
-- HTML parsing and link extraction
-- File download operations
-- URL handling (relative/absolute conversion)
-- Error handling for network and I/O operations
-- Integration scenarios
+- ✅ Manejo de peticiones HTTP y casos de error
+- ✅ Parsing HTML y extracción de enlaces
+- ✅ Operaciones de descarga de archivos
+- ✅ Manejo de URLs (conversión relativa/absoluta)
+- ✅ Manejo de errores para operaciones de red y E/S
+- ✅ Escenarios de integración
 
-## Project Structure
+## 🏗️ Estructura del Proyecto
 
 ```
 .
-├── tripero.py          # Main module with FileDownloader class
-├── tests/
+├── tripero.py              # Implementación principal en Python
+├── src/
+│   ├── cpp/                # Implementación en C++
+│   │   ├── file_downloader.hpp
+│   │   ├── file_downloader.cpp
+│   │   ├── main.cpp
+│   │   └── CMakeLists.txt
+│   ├── javascript/         # Implementación en Node.js
+│   │   ├── fileDownloader.js
+│   │   ├── main.js
+│   │   └── package.json
+│   ├── java/              # Implementación en Java
+│   │   ├── FileDownloader.java
+│   │   └── Main.java
+│   └── go/                # Implementación en Go
+│       ├── filedownloader.go
+│       └── go.mod
+├── tests/                 # Suite de tests (Python)
 │   ├── __init__.py
-│   └── test_tripero.py # Comprehensive test suite
-├── requirements.txt    # Project dependencies
-├── pytest.ini        # Test configuration
-└── README.md          # This file
+│   └── test_tripero.py
+├── docker/               # Dockerfiles para cada lenguaje
+│   ├── Dockerfile.python
+│   ├── Dockerfile.nodejs
+│   ├── Dockerfile.java
+│   ├── Dockerfile.go
+│   └── Dockerfile.dev
+├── requirements.txt      # Dependencias Python
+├── pytest.ini          # Configuración de tests
+├── Makefile            # Automatización de builds
+├── docker-compose.yml  # Orquestación de contenedores
+└── README.md          # Este archivo
 ```
 
-## Code Quality
+## 🔧 Características por Lenguaje
 
-- Type hints for better code documentation
-- Comprehensive docstrings
-- Error handling for all external operations
-- Modular design for easy testing and maintenance
-- Following Python best practices
+| Lenguaje | Concurrencia | Dependencias | Compilación | Rendimiento |
+|----------|-------------|--------------|-------------|-------------|
+| **Python** | ❌ | requests, beautifulsoup4 | ❌ | ⭐⭐⭐ |
+| **C++** | ❌ | libcurl | ✅ | ⭐⭐⭐⭐⭐ |
+| **JavaScript** | ✅ | axios, cheerio | ❌ | ⭐⭐⭐⭐ |
+| **Java** | ✅ | Ninguna (stdlib) | ✅ | ⭐⭐⭐⭐ |
+| **Go** | ✅ | Ninguna (stdlib) | ✅ | ⭐⭐⭐⭐⭐ |
+
+## 🐳 Docker
+
+Cada implementación tiene su propio Dockerfile optimizado:
+
+```bash
+# Construir todas las imágenes
+docker-compose build
+
+# Ejecutar implementación específica
+docker-compose up [python-downloader|nodejs-downloader|java-downloader|go-downloader]
+
+# Entorno de desarrollo
+docker-compose up dev-environment
+```
+
+## 🛠️ Comandos Make Disponibles
+
+```bash
+make install      # Instalar dependencias
+make all          # Compilar todos los proyectos
+make test         # Ejecutar tests de Python
+make clean        # Limpiar archivos compilados
+
+# Ejecutar por lenguaje
+make run-python   # Ejecutar versión Python
+make run-js       # Ejecutar versión JavaScript
+make run-cpp      # Ejecutar versión C++
+make run-java     # Ejecutar versión Java
+make run-go       # Ejecutar versión Go
+
+# Compilar por lenguaje
+make build-cpp    # Compilar C++
+make build-java   # Compilar Java
+make build-go     # Compilar Go
+```
+
+## 🎨 Calidad del Código
+
+- **Type hints** para mejor documentación (Python)
+- **Documentación completa** con docstrings/comentarios
+- **Manejo de errores** para todas las operaciones externas
+- **Diseño modular** para fácil testing y mantenimiento
+- **Siguiendo mejores prácticas** de cada lenguaje
+- **Gestión de memoria** adecuada (C++, Go)
+- **Programación concurrente** donde es apropiado
+
+## 🤝 Contribuir
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📝 Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
+
+## 🌟 Roadmap
+
+- [ ] Implementación en Rust
+- [ ] Implementación en C#
+- [ ] GUI con Electron/Tauri
+- [ ] API REST
+- [ ] Soporte para autenticación
+- [ ] Descarga de sitios completos
+- [ ] Interfaz web con React/Vue
