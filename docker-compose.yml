@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # Servicio Python
+  python-downloader:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.python
+    volumes:
+      - ./downloads:/app/downloads
+      - .:/app
+    environment:
+      - PYTHONPATH=/app
+    command: python tripero.py
+
+  # Servicio Node.js
+  nodejs-downloader:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.nodejs
+    volumes:
+      - ./downloads:/app/downloads
+      - ./src/javascript:/app
+    working_dir: /app
+    command: node main.js
+
+  # Servicio Go
+  go-downloader:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.go
+    volumes:
+      - ./downloads:/app/downloads
+      - ./src/go:/app
+    working_dir: /app
+    command: ./filedownloader
+
+  # Servicio Java
+  java-downloader:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.java
+    volumes:
+      - ./downloads:/app/downloads
+      - ./src/java:/app
+    working_dir: /app
+    command: java com.filedownloader.Main
+
+  # Servicio de desarrollo con todas las herramientas
+  dev-environment:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dev
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    ports:
+      - "8080:8080"
+    command: bash
+
+volumes:
+  downloads:
