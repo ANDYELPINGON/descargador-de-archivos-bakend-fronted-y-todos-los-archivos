@@ -5,7 +5,7 @@
 int main() {
     std::cout << "=== Descargador de Archivos C++ ===" << std::endl;
     
-    // Configuración
+    // Configuración by andydcc
     std::string base_url = "https://example.com/archives";
     std::string file_extension = ".bakent_fronted";
     std::string download_dir = "archivos_cpp";
